@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaige.ge - Financial Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .calculator-section {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+        }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+        }
+        
+        .range-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+        }
+        
+        .loan-slider { background: #bfdbfe; }
+        .deposit-slider { background: #bbf7d0; }
+        .currency-slider { background: #ddd6fe; }
+        
+        .tab-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            flex: 1;
+        }
+        
+        .tab-button.active {
+            color: white;
+        }
+        
+        .tab-button:not(.active) {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .tab-button:not(.active):hover {
+            background: #e5e7eb;
+        }
+        
+        .result-box {
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .currency-card {
+            background: #f9fafb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .currency-card:hover {
+            background: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-900">Gaige.ge</span>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#loan-calc" class="text-gray-700 hover:text-blue-600">სესხის კალკულატორი</a>
+                    <a href="#deposit-calc" class="text-gray-700 hover:text-blue-600">ანაბრის კალკულატორი</a>
+                    <a href="#currency-calc" class="text-gray-700 hover:text-blue-600">ვალუტის კურსი</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">საფინანსო კალკულატორები</h1>
+            <p class="text-xl text-blue-100">გამოთვალეთ სესხის, ანაბრის და ვალუტის კურსი</p>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        
+        <!-- Loan Calculator -->
+        <div id="loan-calc" class="calculator-section">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <svg class="w-8 h-8 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+                სესხის კალკულატორი
+            </h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        კრედიტის თანხა: <span id="loan-amount-display" class="font-bold text-blue-600">10,000</span> ₾
+                    </label>
+                    <input type="range" id="loan-amount" class="range-slider loan-slider" 
+                           min="1000" max="100000" step="1000" value="10000">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        წლიური პროცენტი: <span id="loan-rate-display" class="font-bold text-blue-600">12</span>%
+                    </label>
+                    <input type="range" id="loan-rate" class="range-slider loan-slider" 
+                           min="5" max="30" step="0.5" value="12">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        ვადა: <span id="loan-months-display" class="font-bold text-blue-600">12</span> თვე
+                    </label>
+                    <input type="range" id="loan-months" class="range-slider loan-slider" 
+                           min="6" max="60" step="6" value="12">
+                </div>
+                
+                <div class="result-box bg-gradient-to-r from-blue-50 to-blue-100">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-gray-700 font-medium">ყოველთვიური გადასახადი:</span>
+                        <span id="monthly-payment" class="text-3xl font-bold text-blue-600">0 ₾</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-blue-200 mb-2">
+                        <span class="text-gray-600">ჯამში გადახდილი:</span>
+                        <span id="total-paid" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">პროცენტი:</span>
+                        <span id="total-interest" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deposit Calculator -->
+        <div id="deposit-calc" class="calculator-section">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <svg class="w-8 h-8 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                ანაბრის კალკულატორი
+            </h2>
+            
+            <div class="flex gap-2 mb-6">
+                <button class="tab-button active" style="background: #16a34a;" onclick="switchDepositType('term')">ვადიანი</button>
+                <button class="tab-button" onclick="switchDepositType('cumulative')">ზრდადი</button>
+                <button class="tab-button" onclick="switchDepositType('child')">საბავშვო</button>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        საწყისი თანხა: <span id="deposit-amount-display" class="font-bold text-green-600">5,000</span> ₾
+                    </label>
+                    <input type="range" id="deposit-amount" class="range-slider deposit-slider" 
+                           min="500" max="50000" step="500" value="5000">
+                </div>
+                
+                <div id="deposit-months-section">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        ვადა: <span id="deposit-months-display" class="font-bold text-green-600">12</span> თვე
+                    </label>
+                    <input type="range" id="deposit-months" class="range-slider deposit-slider" 
+                           min="3" max="36" step="3" value="12">
+                </div>
+                
+                <div id="deposit-years-section" style="display: none;">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        ვადა: <span id="deposit-years-display" class="font-bold text-green-600">5</span> წელი
+                    </label>
+                    <input type="range" id="deposit-years" class="range-slider deposit-slider" 
+                           min="1" max="18" step="1" value="5">
+                </div>
+                
+                <div id="monthly-payment-section" style="display: none;">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        თვიური გადასახადი: <span id="monthly-deposit-display" class="font-bold text-green-600">100</span> ₾
+                    </label>
+                    <input type="range" id="monthly-deposit" class="range-slider deposit-slider" 
+                           min="50" max="1000" step="50" value="100">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        პროცენტი: <span id="deposit-rate-display" class="font-bold text-green-600">8</span>%
+                    </label>
+                    <input type="range" id="deposit-rate" class="range-slider deposit-slider" 
+                           min="4" max="15" step="0.5" value="8">
+                </div>
+                
+                <div class="result-box bg-gradient-to-r from-green-50 to-green-100">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-gray-700 font-medium">ჯამური დანაზოგი:</span>
+                        <span id="deposit-total" class="text-3xl font-bold text-green-600">0 ₾</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-3 border-t border-green-200">
+                        <span class="text-gray-600">დარიცხული სარგებელი:</span>
+                        <span id="deposit-interest" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Currency Calculator -->
+        <div id="currency-calc" class="calculator-section">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <svg class="w-8 h-8 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                ვალუტის კურსი
+            </h2>
+            
+            <div class="flex gap-2 mb-6">
+                <button class="tab-button active" style="background: #9333ea;" onclick="switchCurrencyMode('from')">ლარიდან</button>
+                <button class="tab-button" onclick="switchCurrencyMode('to')">ლარში</button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">რაოდენობა</label>
+                    <input type="number" id="currency-amount" value="100" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">ვალუტა</label>
+                    <select id="currency-select" 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        <option value="USD">🇺🇸 USD</option>
+                        <option value="EUR">🇪🇺 EUR</option>
+                        <option value="GBP">🇬🇧 GBP</option>
+                        <option value="RUB">🇷🇺 RUB</option>
+                        <option value="TRY">🇹🇷 TRY</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="result-box bg-gradient-to-r from-purple-50 to-purple-100 text-center">
+                <div class="text-sm text-gray-600 mb-2" id="currency-result-label">შედეგი (GEL)</div>
+                <div class="text-4xl font-bold text-purple-600 mb-2" id="currency-result">0.00</div>
+                <div class="text-sm text-gray-500" id="currency-rate-info">კურსი: 1 USD = 2.65 ₾</div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
+                <div class="currency-card" onclick="selectCurrency('USD')">
+                    <div class="text-2xl mb-1">🇺🇸</div>
+                    <div class="font-semibold text-gray-900">USD</div>
+                    <div class="text-sm text-gray-600">2.65 ₾</div>
+                </div>
+                <div class="currency-card" onclick="selectCurrency('EUR')">
+                    <div class="text-2xl mb-1">🇪🇺</div>
+                    <div class="font-semibold text-gray-900">EUR</div>
+                    <div class="text-sm text-gray-600">2.95 ₾</div>
+                </div>
+                <div class="currency-card" onclick="selectCurrency('GBP')">
+                    <div class="text-2xl mb-1">🇬🇧</div>
+                    <div class="font-semibold text-gray-900">GBP</div>
+                    <div class="text-sm text-gray-600">3.45 ₾</div>
+                </div>
+                <div class="currency-card" onclick="selectCurrency('RUB')">
+                    <div class="text-2xl mb-1">🇷🇺</div>
+                    <div class="font-semibold text-gray-900">RUB</div>
+                    <div class="text-sm text-gray-600">0.029 ₾</div>
+                </div>
+                <div class="currency-card" onclick="selectCurrency('TRY')">
+                    <div class="text-2xl mb-1">🇹🇷</div>
+                    <div class="font-semibold text-gray-900">TRY</div>
+                    <div class="text-sm text-gray-600">0.085 ₾</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2026 Gaige.ge - საზოგადოება და ბანკები</p>
+            <p class="text-sm text-gray-500 mt-2">
+                ვებგვერდზე განთავსებული ინფორმაცია წარმოადგენს საილუსტრაციო მასალას
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Currency rates
+        const currencyRates = {
+            USD: 2.65,
+            EUR: 2.95,
+            GBP: 3.45,
+            RUB: 0.029,
+            TRY: 0.085
+        };
+        
+        let depositType = 'term';
+        let currencyMode = 'from';
+        
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        // Loan Calculator
+        function calculateLoan() {
+            const amount = parseFloat(document.getElementById('loan-amount').value);
+            const rate = parseFloat(document.getElementById('loan-rate').value) / 100 / 12;
+            const months = parseInt(document.getElementById('loan-months').value);
+            
+            const monthlyPayment = (amount * rate * Math.pow(1 + rate, months)) / (Math.pow(1 + rate, months) - 1);
+            const totalPaid = monthlyPayment * months;
+            const totalInterest = totalPaid - amount;
+            
+            document.getElementById('monthly-payment').textContent = formatNumber(monthlyPayment.toFixed(2)) + ' ₾';
+            document.getElementById('total-paid').textContent = formatNumber(totalPaid.toFixed(2)) + ' ₾';
+            document.getElementById('total-interest').textContent = formatNumber(totalInterest.toFixed(2)) + ' ₾';
+        }
+        
+        // Deposit Calculator
+        function calculateDeposit() {
+            const amount = parseFloat(document.getElementById('deposit-amount').value);
+            const rate = parseFloat(document.getElementById('deposit-rate').value) / 100;
+            
+            let total, interest;
+            
+            if (depositType === 'term') {
+                const months = parseInt(document.getElementById('deposit-months').value);
+                interest = amount * rate * (months / 12);
+                total = amount + interest;
+            } else if (depositType === 'cumulative') {
+                const months = parseInt(document.getElementById('deposit-months').value);
+                const monthly = parseFloat(document.getElementById('monthly-deposit').value);
+                total = amount;
+                for (let i = 0; i < months; i++) {
+                    total += monthly;
+                    total += total * (rate / 12);
+                }
+                interest = total - (amount + monthly * months);
+            } else {
+                const years = parseInt(document.getElementById('deposit-years').value);
+                const monthly = parseFloat(document.getElementById('monthly-deposit').value);
+                const months = years * 12;
+                total = amount;
+                for (let i = 0; i < months; i++) {
+                    total += monthly;
+                    total += total * (rate / 12);
+                }
+                interest = total - (amount + monthly * months);
+            }
+            
+            document.getElementById('deposit-total').textContent = formatNumber(total.toFixed(2)) + ' ₾';
+            document.getElementById('deposit-interest').textContent = formatNumber(interest.toFixed(2)) + ' ₾';
+        }
+        
+        // Currency Calculator
+        function calculateCurrency() {
+            const amount = parseFloat(document.getElementById('currency-amount').value) || 0;
+            const currency = document.getElementById('currency-select').value;
+            const rate = currencyRates[currency];
+            
+            let result;
+            if (currencyMode === 'from') {
+                result = amount / rate;
+                document.getElementById('currency-result-label').textContent = 'შედეგი (GEL)';
+            } else {
+                result = amount * rate;
+                document.getElementById('currency-result-label').textContent = `შედეგი (${currency})`;
+            }
+            
+            document.getElementById('currency-result').textContent = result.toFixed(2);
+            document.getElementById('currency-rate-info').textContent = `კურსი: 1 ${currency} = ${rate} ₾`;
+        }
+        
+        // Switch Deposit Type
+        function switchDepositType(type) {
+            depositType = type;
+            
+            // Update tab buttons
+            const buttons = document.querySelectorAll('#deposit-calc .tab-button');
+            buttons.forEach((btn, index) => {
+                if ((index === 0 && type === 'term') || 
+                    (index === 1 && type === 'cumulative') || 
+                    (index === 2 && type === 'child')) {
+                    btn.classList.add('active');
+                    btn.style.background = '#16a34a';
+                } else {
+                    btn.classList.remove('active');
+                    btn.style.background = '';
+                }
+            });
+            
+            // Show/hide sections
+            const monthsSection = document.getElementById('deposit-months-section');
+            const yearsSection = document.getElementById('deposit-years-section');
+            const monthlySection = document.getElementById('monthly-payment-section');
+            
+            if (type === 'term') {
+                monthsSection.style.display = 'block';
+                yearsSection.style.display = 'none';
+                monthlySection.style.display = 'none';
+            } else if (type === 'cumulative') {
+                monthsSection.style.display = 'block';
+                yearsSection.style.display = 'none';
+                monthlySection.style.display = 'block';
+            } else {
+                monthsSection.style.display = 'none';
+                yearsSection.style.display = 'block';
+                monthlySection.style.display = 'block';
+            }
+            
+            calculateDeposit();
+        }
+        
+        // Switch Currency Mode
+        function switchCurrencyMode(mode) {
+            currencyMode = mode;
+            
+            const buttons = document.querySelectorAll('#currency-calc .tab-button');
+            buttons.forEach((btn, index) => {
+                if ((index === 0 && mode === 'from') || (index === 1 && mode === 'to')) {
+                    btn.classList.add('active');
+                    btn.style.background = '#9333ea';
+                } else {
+                    btn.classList.remove('active');
+                    btn.style.background = '';
+                }
+            });
+            
+            calculateCurrency();
+        }
+        
+        // Select Currency
+        function selectCurrency(currency) {
+            document.getElementById('currency-select').value = currency;
+            calculateCurrency();
+        }
+        
+        // Event Listeners - Loan
+        document.getElementById('loan-amount').addEventListener('input', function() {
+            document.getElementById('loan-amount-display').textContent = formatNumber(this.value);
+            calculateLoan();
+        });
+        
+        document.getElementById('loan-rate').addEventListener('input', function() {
+            document.getElementById('loan-rate-display').textContent = this.value;
+            calculateLoan();
+        });
+        
+        document.getElementById('loan-months').addEventListener('input', function() {
+            document.getElementById('loan-months-display').textContent = this.value;
+            calculateLoan();
+        });
+        
+        // Event Listeners - Deposit
+        document.getElementById('deposit-amount').addEventListener('input', function() {
+            document.getElementById('deposit-amount-display').textContent = formatNumber(this.value);
+            calculateDeposit();
+        });
+        
+        document.getElementById('deposit-months').addEventListener('input', function() {
+            document.getElementById('deposit-months-display').textContent = this.value;
+            calculateDeposit();
+        });
+        
+        document.getElementById('deposit-years').addEventListener('input', function() {
+            document.getElementById('deposit-years-display').textContent = this.value;
+            calculateDeposit();
+        });
+        
+        document.getElementById('monthly-deposit').addEventListener('input', function() {
+            document.getElementById('monthly-deposit-display').textContent = formatNumber(this.value);
+            calculateDeposit();
+        });
+        
+        document.getElementById('deposit-rate').addEventListener('input', function() {
+            document.getElementById('deposit-rate-display').textContent = this.value;
+            calculateDeposit();
+        });
+        
+        // Event Listeners - Currency
+        document.getElementById('currency-amount').addEventListener('input', calculateCurrency);
+        document.getElementById('currency-select').addEventListener('change', calculateCurrency);
+        
+        // Initial calculations
+        calculateLoan();
+        calculateDeposit();
+        calculateCurrency();
+    </script>
+</body>
+</html>
