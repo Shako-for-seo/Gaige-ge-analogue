@@ -321,12 +321,39 @@
 
     <script>
         // Currency rates
-        const currencyRates = {
-            USD: 2.72,
-            EUR: 2.95,
-            GBP: 3.45,
-            RUB: 0.029,
-            TRY: 0.085
+       const currencyRates = {
+    USD: 2.65,
+    EUR: 2.95,
+    GBP: 3.45,
+    RUB: 0.029,
+    TRY: 0.085
+};
+async function fetchLiveRates() {
+    try {
+        const res = await fetch('https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/en/json');
+        const data = await res.json();
+        const currencies = data[0].currencies;
+        currencies.forEach(c => {
+            if (currencyRates[c.code] !== undefined) {
+                currencyRates[c.code] = c.rate / c.quantity;
+            }
+        });
+        updateCurrencyCards();
+        calculateCurrency();
+    } catch(e) {
+        console.log('Using fallback rates');
+    }
+}
+
+function updateCurrencyCards() {
+    document.querySelectorAll('.currency-card').forEach(card => {
+        const code = card.querySelector('.font-semibold').textContent;
+        if (currencyRates[code]) {
+            card.querySelector('.text-sm').textContent = currencyRates[code].toFixed(4) + ' ₾';
+        }
+    });
+}
+
         };
         
         let depositType = 'term';
@@ -518,9 +545,10 @@
         document.getElementById('currency-select').addEventListener('change', calculateCurrency);
         
         // Initial calculations
-        calculateLoan();
-        calculateDeposit();
-        calculateCurrency();
+       calculateLoan();
+calculateDeposit();
+calculateCurrency();
+fetchLiveRates();
     </script>
 </body>
 </html>
