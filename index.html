@@ -3,64 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Meta Tags -->
-    <title>Valuta.ge - სესხის, ანაბრის და ვალუტის კალკულატორი</title>
-    <meta name="title" content="Valuta.ge - სესხის, ანაბრის და ვალუტის კალკულატორი">
-    <meta name="description" content="გამოთვალეთ სესხის ყოველთვიური გადასახადი, ანაბრის სარგებელი და ვალუტის კურსი ლარში. უფასო ონლაინ საფინანსო კალკულატორები.">
-    <meta name="keywords" content="სესხის კალკულატორი, ანაბრის კალკულატორი, ვალუტის კურსი, ლარი, GEL, USD, EUR, საქართველო, ბანკი, კრედიტი">
-    <meta name="author" content="Valuta.ge">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Georgian">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://avejisqimwmenda.com/">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://avejisqimwmenda.com/">
-    <meta property="og:title" content="Valuta.ge - სესხის, ანაბრის და ვალუტის კალკულატორი">
-    <meta property="og:description" content="გამოთვალეთ სესხის ყოველთვიური გადასახადი, ანაბრის სარგებელი და ვალუტის კურსი ლარში. უფასო ონლაინ საფინანსო კალკულატორები.">
-    <meta property="og:site_name" content="Valuta.ge">
-    <meta property="og:locale" content="ka_GE">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://avejisqimwmenda.com/">
-    <meta name="twitter:title" content="Valuta.ge - სესხის, ანაბრის და ვალუტის კალკულატორი">
-    <meta name="twitter:description" content="გამოთვალეთ სესხის ყოველთვიური გადასახადი, ანაბრის სარგებელი და ვალუტის კურსი ლარში.">
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Valuta.ge",
-      "url": "https://avejisqimwmenda.com/",
-      "description": "საქართველოს საფინანსო კალკულატორები - სესხი, ანაბარი, ვალუტის კურსი",
-      "inLanguage": "ka",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://avejisqimwmenda.com/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialService",
-      "name": "Valuta.ge",
-      "url": "https://avejisqimwmenda.com/",
-      "description": "უფასო ონლაინ საფინანსო კალკულატორები საქართველოსთვის",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Georgia"
-      },
-      "serviceType": ["Loan Calculator", "Deposit Calculator", "Currency Exchange Calculator"]
-    }
-    </script>
-
+    <title>Valuta.ge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .calculator-section { background: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); padding: 2rem; margin-bottom: 2rem; }
@@ -77,15 +20,6 @@
         .currency-card { background: #f9fafb; border-radius: 0.5rem; padding: 1rem; text-align: center; transition: all 0.3s; cursor: pointer; }
         .currency-card:hover { background: #f3f4f6; }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLJT1DRZM8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VLJT1DRZM8');
-    </script>
-    <!-- End Google Analytics -->
 </head>
 <body class="bg-gray-50">
 
@@ -262,10 +196,115 @@
         </div>
     </div>
 
-    <footer class="bg-gray-900 text-white py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-gray-400">© 2026 Valuta.ge - საზოგადოება და ბანკები</p>
-            <p class="text-sm text-gray-500 mt-2">ვებგვერდზე განთავსებული ინფორმაცია წარმოადგენს საილუსტრაციო მასალას</p>
+
+    <!-- FAQ Section -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="calculator-section">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">ხშირად დასმული კითხვები</h2>
+            <div class="space-y-4" id="faq-container">
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-medium text-gray-900 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>როგორ გამოვთვალო სესხის ყოველთვიური გადასახადი?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 text-gray-600 bg-white">
+                        სესხის კალკულატორში შეიყვანეთ სასურველი თანხა, წლიური საპროცენტო განაკვეთი და ვადა (თვეებში). კალკულატორი ავტომატურად გამოთვლის ყოველთვიურ გადასახადს, ჯამურ გადახდილ თანხას და პროცენტს.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-medium text-gray-900 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>საიდან მოდის ვალუტის კურსი?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 text-gray-600 bg-white">
+                        ვალუტის კურსი ავტომატურად ჩაიტვირთება საქართველოს ეროვნული ბანკის (NBG) ოფიციალური API-დან. კურსი განახლდება ყოველდღიურად სამუშაო დღეებში.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-medium text-gray-900 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>რა განსხვავებაა ვადიან და ზრდად ანაბარს შორის?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 text-gray-600 bg-white">
+                        ვადიან ანაბარზე თქვენ ათავსებთ ერთჯერად თანხას და ვადის ბოლოს იღებთ სარგებელს. ზრდად ანაბარზე კი შეგიძლიათ ყოველთვიურად დაამატოთ თანხა, რაც საბოლოოდ მეტ სარგებელს მოგიტანთ.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-medium text-gray-900 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>შეიძლება თუ არა უცხოური ვალუტით სესხის გამოთვლა?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 text-gray-600 bg-white">
+                        დიახ! სესხის კალკულატორში შეგიძლიათ აირჩიოთ ლარი (₾), დოლარი ($) ან ევრო (€). უცხოური ვალუტის არჩევისას კალკულატორი ასევე გაჩვენებთ ლარში შესაბამის თანხას.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-medium text-gray-900 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>რა არის საბავშვო ანაბარი?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 text-gray-600 bg-white">
+                        საბავშვო ანაბარი არის გრძელვადიანი დანაზოგი, რომელიც განკუთვნილია ბავშვის მომავლისთვის. მშობლები ყოველთვიურად ამატებენ თანხას და 18 წლის ასაკამდე გროვდება მნიშვნელოვანი დანაზოგი.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-medium text-gray-900 bg-gray-50 hover:bg-gray-100 flex justify-between items-center" onclick="toggleFaq(this)">
+                        <span>კალკულატორის შედეგები ზუსტია?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 text-gray-600 bg-white">
+                        კალკულატორი იყენებს სტანდარტულ საფინანსო ფორმულებს და იძლევა სავარაუდო შედეგებს. რეალური პირობები შეიძლება განსხვავდებოდეს ბანკის მიხედვით. საბოლოო გადაწყვეტილებამდე გთხოვთ გაიაროთ კონსულტაცია თქვენი ბანკთან.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Improved Footer -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                        <span class="text-xl font-bold">Valuta.ge</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">საქართველოს საუკეთესო უფასო საფინანსო კალკულატორები. გამოთვალეთ სესხი, ანაბარი და ვალუტა წამებში.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-white mb-4">კალკულატორები</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#loan-calc" class="hover:text-white transition-colors">🏦 სესხის კალკულატორი</a></li>
+                        <li><a href="#deposit-calc" class="hover:text-white transition-colors">💰 ანაბრის კალკულატორი</a></li>
+                        <li><a href="#currency-calc" class="hover:text-white transition-colors">💱 ვალუტის კურსი</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-white mb-4">ინფორმაცია</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="https://nbg.gov.ge" target="_blank" class="hover:text-white transition-colors">🏛️ ეროვნული ბანკი (NBG)</a></li>
+                        <li><a href="#faq-container" class="hover:text-white transition-colors">❓ ხშირად დასმული კითხვები</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2026 Valuta.ge — ყველა უფლება დაცულია</p>
+                <p class="text-gray-500 text-xs mt-2 md:mt-0">ვებგვერდზე განთავსებული ინფორმაცია საილუსტრაციო მასალაა. გთხოვთ გაიაროთ კონსულტაცია ბანკთან.</p>
+            </div>
         </div>
     </footer>
 
@@ -401,6 +440,20 @@
         document.getElementById('currency-amount').addEventListener('input', calculateCurrency);
         document.getElementById('currency-select').addEventListener('change', calculateCurrency);
 
+
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.faq-icon');
+            const isOpen = !answer.classList.contains('hidden');
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+            // Open clicked if it was closed
+            if (!isOpen) {
+                answer.classList.remove('hidden');
+                icon.textContent = '−';
+            }
+        }
         calculateLoan();
         calculateDeposit();
         calculateCurrency();
