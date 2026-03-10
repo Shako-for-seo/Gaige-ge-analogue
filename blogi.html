@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ბლოგი — Valuta.ge</title>
+    <meta name="description" content="Valuta.ge ბლოგი — საფინანსო სიახლეები, რჩევები სესხის, ანაბრის და ვალუტის კურსის შესახებ.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .blog-card { background: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15); }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .category-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    <a href="/" class="text-2xl font-bold text-gray-900">Valuta.ge</a>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="/#loan-calc" class="text-gray-700 hover:text-blue-600">სესხის კალკულატორი</a>
+                    <a href="/#deposit-calc" class="text-gray-700 hover:text-blue-600">ანაბრის კალკულატორი</a>
+                    <a href="/#currency-calc" class="text-gray-700 hover:text-blue-600">ვალუტის კურსი</a>
+                    <a href="blogi.html" class="text-blue-600 font-semibold">ბლოგი</a>
+                    <a href="kontaqti.html" class="text-gray-700 hover:text-blue-600">კონტაქტი</a>
+                </nav>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-3 pb-2">
+                <a href="/#loan-calc" class="block text-gray-700 hover:text-blue-600">სესხის კალკულატორი</a>
+                <a href="/#deposit-calc" class="block text-gray-700 hover:text-blue-600">ანაბრის კალკულატორი</a>
+                <a href="/#currency-calc" class="block text-gray-700 hover:text-blue-600">ვალუტის კურსი</a>
+                <a href="blogi.html" class="block text-blue-600 font-semibold">ბლოგი</a>
+                <a href="kontaqti.html" class="block text-gray-700 hover:text-blue-600">კონტაქტი</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">ბლოგი</h1>
+            <p class="text-xl text-blue-100">საფინანსო სიახლეები, რჩევები და ანალიზი</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+
+        <!-- Featured Post -->
+        <div class="blog-card mb-10">
+            <div class="md:flex">
+                <div class="md:w-1/2 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center p-12">
+                    <svg class="w-24 h-24 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <span class="category-tag bg-blue-100 text-blue-700">მთავარი სტატია</span>
+                    <h2 class="text-2xl font-bold text-gray-900 mt-3 mb-3">როგორ ავირჩიოთ საუკეთესო სესხი 2026 წელს</h2>
+                    <p class="text-gray-600 mb-4">სესხის აღება მნიშვნელოვანი ფინანსური გადაწყვეტილებაა. ამ სტატიაში განვიხილავთ, რა უნდა გაითვალისწინოთ სესხის არჩევისას, როგორ შეადაროთ სხვადასხვა ბანკის შეთავაზებები და რა არის ეფექტური საპროცენტო განაკვეთი.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>10 მარტი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>8 წუთის წასაკითხი</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Post 1 -->
+            <article class="blog-card">
+                <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <span class="category-tag bg-green-100 text-green-700">ანაბარი</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">ანაბრის სახეები და მათი უპირატესობები</h3>
+                    <p class="text-gray-600 text-sm mb-4">ვადიანი, ზრდადი თუ საბავშვო ანაბარი — რომელია თქვენთვის საუკეთესო? შეადარეთ პირობები და აირჩიეთ ოპტიმალური ვარიანტი.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>8 მარტი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>5 წუთი</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card">
+                <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <span class="category-tag bg-purple-100 text-purple-700">ვალუტა</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">ლარის კურსის პროგნოზი 2026 წლისთვის</h3>
+                    <p class="text-gray-600 text-sm mb-4">რა ფაქტორები მოქმედებს ლარის გაცვლით კურსზე და რა შეიძლება ველოდოთ მომავალ თვეებში? ექსპერტების მოსაზრებები.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>5 მარტი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>6 წუთი</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card">
+                <div class="bg-gradient-to-br from-orange-400 to-red-500 h-48 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <span class="category-tag bg-orange-100 text-orange-700">იპოთეკა</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">იპოთეკური სესხი: სრული გზამკვლევი</h3>
+                    <p class="text-gray-600 text-sm mb-4">რა დოკუმენტებია საჭირო, როგორია პროცენტები და რა უნდა იცოდეთ იპოთეკის აღებამდე — ყველაფერი ერთ სტატიაში.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>1 მარტი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>10 წუთი</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card">
+                <div class="bg-gradient-to-br from-teal-400 to-teal-600 h-48 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <span class="category-tag bg-teal-100 text-teal-700">რჩევები</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">5 რჩევა პირადი ფინანსების მართვისთვის</h3>
+                    <p class="text-gray-600 text-sm mb-4">ბიუჯეტის დაგეგმვა, დანაზოგის სტრატეგიები და ხარჯების ოპტიმიზაცია — პრაქტიკული რჩევები ყოველდღიური ცხოვრებისთვის.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>25 თებერვალი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 წუთი</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="blog-card">
+                <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 h-48 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <span class="category-tag bg-indigo-100 text-indigo-700">ბანკები</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">საქართველოს ბანკების შედარება 2026</h3>
+                    <p class="text-gray-600 text-sm mb-4">რომელი ბანკი სთავაზობს საუკეთესო პირობებს სესხებზე და ანაბრებზე? დეტალური შედარებითი ანალიზი.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>20 თებერვალი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>7 წუთი</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 6 -->
+            <article class="blog-card">
+                <div class="bg-gradient-to-br from-pink-400 to-pink-600 h-48 flex items-center justify-center">
+                    <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <span class="category-tag bg-pink-100 text-pink-700">განათლება</span>
+                    <h3 class="text-lg font-bold text-gray-900 mt-3 mb-2">ფინანსური წიგნიერება: საიდან დავიწყოთ?</h3>
+                    <p class="text-gray-600 text-sm mb-4">ფინანსური განათლების საფუძვლები — რა უნდა იცოდეს ყველა ადამიანმა ფულის, ინვესტიციების და დანაზოგების შესახებ.</p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span>15 თებერვალი, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>6 წუთი</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                        <span class="text-xl font-bold">Valuta.ge</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">საქართველოს საუკეთესო უფასო საფინანსო კალკულატორები.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-4">კალკულატორები</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="/#loan-calc" class="hover:text-white transition-colors">🏦 სესხის კალკულატორი</a></li>
+                        <li><a href="/#deposit-calc" class="hover:text-white transition-colors">💰 ანაბრის კალკულატორი</a></li>
+                        <li><a href="/#currency-calc" class="hover:text-white transition-colors">💱 ვალუტის კურსი</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-4">გვერდები</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="blogi.html" class="hover:text-white transition-colors">📝 ბლოგი</a></li>
+                        <li><a href="kontaqti.html" class="hover:text-white transition-colors">📞 კონტაქტი</a></li>
+                        <li><a href="iuridiuli.html" class="hover:text-white transition-colors">📋 იურიდიული</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-4">კონტაქტი</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>📞 <a href="tel:+995598388705" class="hover:text-white">598 38 87 05</a></li>
+                        <li>✉️ <a href="mailto:info@adsocial.ge" class="hover:text-white">info@adsocial.ge</a></li>
+                        <li>📍 გიორგი ჩხონდიდელის 105</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 text-center">
+                <p class="text-gray-400 text-sm">© 2026 Valuta.ge — ყველა უფლება დაცულია</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
