@@ -28,6 +28,57 @@
         .result-box { border-radius: 0.5rem; padding: 1.5rem; margin-top: 2rem; }
         .currency-card { background: #f9fafb; border-radius: 0.5rem; padding: 1rem; text-align: center; transition: all 0.3s; cursor: pointer; }
         .currency-card:hover { background: #f3f4f6; }
+
+        /* ===== SIDE BANNERS ===== */
+        .page-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .side-banner {
+            width: 160px;
+            min-width: 160px;
+            position: sticky;
+            top: 80px; /* clears the sticky header */
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .banner-slot {
+            width: 160px;
+            min-height: 600px;
+            background: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .banner-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .banner-placeholder-text {
+            color: #9ca3af;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 1rem;
+        }
+        .main-content {
+            flex: 1;
+            min-width: 0;
+            max-width: 896px; /* keeps calculators from stretching too wide */
+        }
+        /* Hide side banners on smaller screens */
+        @media (max-width: 1200px) {
+            .side-banner { display: none; }
+        }
+        /* ===== END SIDE BANNERS ===== */
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLJT1DRZM8"></script>
@@ -77,151 +128,172 @@
         </div>
     </section>
 
+    <!-- PAGE WRAPPER: left banner | main content | right banner -->
     <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="page-wrapper">
 
-        <!-- Loan Calculator -->
-        <div id="loan-calc" class="calculator-section">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <svg class="w-8 h-8 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                </svg>
-                სესხის კალკულატორი
-            </h2>
+            <!-- LEFT BANNER -->
+            <aside class="side-banner">
+                <div class="banner-slot">
+                    <!-- Replace the placeholder below with your <img> tag, e.g.:
+                         <img src="banners/left-banner.jpg" alt="რეკლამა">
+                    -->
+                    <span class="banner-placeholder-text">160 × 600<br>Banner</span>
+                </div>
+            </aside>
 
-            <div class="flex gap-2 mb-6">
-                <button class="tab-button active" style="background:#2563eb;" onclick="switchLoanCurrency('GEL')">🇬🇪 ლარი (₾)</button>
-                <button class="tab-button" onclick="switchLoanCurrency('USD')">🇺🇸 დოლარი ($)</button>
-                <button class="tab-button" onclick="switchLoanCurrency('EUR')">🇪🇺 ევრო (€)</button>
-            </div>
+            <!-- MAIN CONTENT -->
+            <div class="main-content">
 
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        კრედიტის თანხა: <span id="loan-amount-display" class="font-bold text-blue-600">10,000</span> <span id="loan-currency-symbol">₾</span>
-                    </label>
-                    <input type="range" id="loan-amount" class="range-slider loan-slider" min="1000" max="1000000" step="1000" value="10000">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        წლიური პროცენტი: <span id="loan-rate-display" class="font-bold text-blue-600">12</span>%
-                    </label>
-                    <input type="range" id="loan-rate" class="range-slider loan-slider" min="1" max="30" step="0.5" value="12">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        ვადა: <span id="loan-months-display" class="font-bold text-blue-600">12</span> თვე
-                    </label>
-                    <input type="range" id="loan-months" class="range-slider loan-slider" min="6" max="60" step="6" value="12">
-                </div>
-                <div class="result-box bg-gradient-to-r from-blue-50 to-blue-100">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-gray-700 font-medium">ყოველთვიური გადასახადი:</span>
-                        <span id="monthly-payment" class="text-3xl font-bold text-blue-600">0 ₾</span>
+                <!-- Loan Calculator -->
+                <div id="loan-calc" class="calculator-section">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <svg class="w-8 h-8 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                        სესხის კალკულატორი
+                    </h2>
+                    <div class="flex gap-2 mb-6">
+                        <button class="tab-button active" style="background:#2563eb;" onclick="switchLoanCurrency('GEL')">🇬🇪 ლარი (₾)</button>
+                        <button class="tab-button" onclick="switchLoanCurrency('USD')">🇺🇸 დოლარი ($)</button>
+                        <button class="tab-button" onclick="switchLoanCurrency('EUR')">🇪🇺 ევრო (€)</button>
                     </div>
-                    <div class="flex justify-between items-center pt-3 border-t border-blue-200 mb-2">
-                        <span class="text-gray-600">ჯამში გადახდილი:</span>
-                        <span id="total-paid" class="text-lg font-semibold text-gray-900">0 ₾</span>
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-600">პროცენტი:</span>
-                        <span id="total-interest" class="text-lg font-semibold text-gray-900">0 ₾</span>
-                    </div>
-                    <div id="loan-conversion-row" class="flex justify-between items-center pt-3 border-t border-blue-200" style="display:none;">
-                        <span class="text-gray-600">ლარში (₾):</span>
-                        <span id="monthly-payment-gel" class="text-lg font-semibold text-blue-800">0 ₾</span>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">კრედიტის თანხა: <span id="loan-amount-display" class="font-bold text-blue-600">10,000</span> <span id="loan-currency-symbol">₾</span></label>
+                            <input type="range" id="loan-amount" class="range-slider loan-slider" min="1000" max="1000000" step="1000" value="10000">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">წლიური პროცენტი: <span id="loan-rate-display" class="font-bold text-blue-600">12</span>%</label>
+                            <input type="range" id="loan-rate" class="range-slider loan-slider" min="1" max="30" step="0.5" value="12">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ვადა: <span id="loan-months-display" class="font-bold text-blue-600">12</span> თვე</label>
+                            <input type="range" id="loan-months" class="range-slider loan-slider" min="6" max="60" step="6" value="12">
+                        </div>
+                        <div class="result-box bg-gradient-to-r from-blue-50 to-blue-100">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-gray-700 font-medium">ყოველთვიური გადასახადი:</span>
+                                <span id="monthly-payment" class="text-3xl font-bold text-blue-600">0 ₾</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-3 border-t border-blue-200 mb-2">
+                                <span class="text-gray-600">ჯამში გადახდილი:</span>
+                                <span id="total-paid" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-600">პროცენტი:</span>
+                                <span id="total-interest" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                            </div>
+                            <div id="loan-conversion-row" class="flex justify-between items-center pt-3 border-t border-blue-200" style="display:none;">
+                                <span class="text-gray-600">ლარში (₾):</span>
+                                <span id="monthly-payment-gel" class="text-lg font-semibold text-blue-800">0 ₾</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Deposit Calculator -->
-        <div id="deposit-calc" class="calculator-section">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <svg class="w-8 h-8 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-                ანაბრის კალკულატორი
-            </h2>
-            <div class="flex gap-2 mb-6">
-                <button class="tab-button active" style="background:#16a34a;" onclick="switchDepositType('term')">ვადიანი</button>
-                <button class="tab-button" onclick="switchDepositType('cumulative')">ზრდადი</button>
-                <button class="tab-button" onclick="switchDepositType('child')">საბავშვო</button>
-            </div>
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">საწყისი თანხა: <span id="deposit-amount-display" class="font-bold text-green-600">5,000</span> ₾</label>
-                    <input type="range" id="deposit-amount" class="range-slider deposit-slider" min="500" max="500000" step="500" value="5000">
-                </div>
-                <div id="deposit-months-section">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ვადა: <span id="deposit-months-display" class="font-bold text-green-600">12</span> თვე</label>
-                    <input type="range" id="deposit-months" class="range-slider deposit-slider" min="3" max="36" step="3" value="12">
-                </div>
-                <div id="deposit-years-section" style="display:none;">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ვადა: <span id="deposit-years-display" class="font-bold text-green-600">5</span> წელი</label>
-                    <input type="range" id="deposit-years" class="range-slider deposit-slider" min="1" max="18" step="1" value="5">
-                </div>
-                <div id="monthly-payment-section" style="display:none;">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">თვიური გადასახადი: <span id="monthly-deposit-display" class="font-bold text-green-600">100</span> ₾</label>
-                    <input type="range" id="monthly-deposit" class="range-slider deposit-slider" min="50" max="1000" step="50" value="100">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">პროცენტი: <span id="deposit-rate-display" class="font-bold text-green-600">8</span>%</label>
-                    <input type="range" id="deposit-rate" class="range-slider deposit-slider" min="4" max="30" step="0.5" value="8">
-                </div>
-                <div class="result-box bg-gradient-to-r from-green-50 to-green-100">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-gray-700 font-medium">ჯამური დანაზოგი:</span>
-                        <span id="deposit-total" class="text-3xl font-bold text-green-600">0 ₾</span>
+                <!-- Deposit Calculator -->
+                <div id="deposit-calc" class="calculator-section">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <svg class="w-8 h-8 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        ანაბრის კალკულატორი
+                    </h2>
+                    <div class="flex gap-2 mb-6">
+                        <button class="tab-button active" style="background:#16a34a;" onclick="switchDepositType('term')">ვადიანი</button>
+                        <button class="tab-button" onclick="switchDepositType('cumulative')">ზრდადი</button>
+                        <button class="tab-button" onclick="switchDepositType('child')">საბავშვო</button>
                     </div>
-                    <div class="flex justify-between items-center pt-3 border-t border-green-200">
-                        <span class="text-gray-600">დარიცხული სარგებელი:</span>
-                        <span id="deposit-interest" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">საწყისი თანხა: <span id="deposit-amount-display" class="font-bold text-green-600">5,000</span> ₾</label>
+                            <input type="range" id="deposit-amount" class="range-slider deposit-slider" min="500" max="500000" step="500" value="5000">
+                        </div>
+                        <div id="deposit-months-section">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ვადა: <span id="deposit-months-display" class="font-bold text-green-600">12</span> თვე</label>
+                            <input type="range" id="deposit-months" class="range-slider deposit-slider" min="3" max="36" step="3" value="12">
+                        </div>
+                        <div id="deposit-years-section" style="display:none;">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ვადა: <span id="deposit-years-display" class="font-bold text-green-600">5</span> წელი</label>
+                            <input type="range" id="deposit-years" class="range-slider deposit-slider" min="1" max="18" step="1" value="5">
+                        </div>
+                        <div id="monthly-payment-section" style="display:none;">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">თვიური გადასახადი: <span id="monthly-deposit-display" class="font-bold text-green-600">100</span> ₾</label>
+                            <input type="range" id="monthly-deposit" class="range-slider deposit-slider" min="50" max="1000" step="50" value="100">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">პროცენტი: <span id="deposit-rate-display" class="font-bold text-green-600">8</span>%</label>
+                            <input type="range" id="deposit-rate" class="range-slider deposit-slider" min="4" max="30" step="0.5" value="8">
+                        </div>
+                        <div class="result-box bg-gradient-to-r from-green-50 to-green-100">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-gray-700 font-medium">ჯამური დანაზოგი:</span>
+                                <span id="deposit-total" class="text-3xl font-bold text-green-600">0 ₾</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-3 border-t border-green-200">
+                                <span class="text-gray-600">დარიცხული სარგებელი:</span>
+                                <span id="deposit-interest" class="text-lg font-semibold text-gray-900">0 ₾</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Currency Calculator -->
-        <div id="currency-calc" class="calculator-section">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <svg class="w-8 h-8 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                ვალუტის კურსი
-            </h2>
-            <div class="flex gap-2 mb-6">
-                <button class="tab-button active" style="background:#9333ea;" onclick="switchCurrencyMode('from')">ლარიდან</button>
-                <button class="tab-button" onclick="switchCurrencyMode('to')">ლარში</button>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">რაოდენობა</label>
-                    <input type="number" id="currency-amount" value="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                <!-- Currency Calculator -->
+                <div id="currency-calc" class="calculator-section">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                        <svg class="w-8 h-8 text-purple-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        ვალუტის კურსი
+                    </h2>
+                    <div class="flex gap-2 mb-6">
+                        <button class="tab-button active" style="background:#9333ea;" onclick="switchCurrencyMode('from')">ლარიდან</button>
+                        <button class="tab-button" onclick="switchCurrencyMode('to')">ლარში</button>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">რაოდენობა</label>
+                            <input type="number" id="currency-amount" value="100" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ვალუტა</label>
+                            <select id="currency-select" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                <option value="USD">🇺🇸 USD</option>
+                                <option value="EUR">🇪🇺 EUR</option>
+                                <option value="GBP">🇬🇧 GBP</option>
+                                <option value="RUB">🇷🇺 RUB</option>
+                                <option value="TRY">🇹🇷 TRY</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="result-box bg-gradient-to-r from-purple-50 to-purple-100 text-center">
+                        <div class="text-sm text-gray-600 mb-2" id="currency-result-label">შედეგი (GEL)</div>
+                        <div class="text-4xl font-bold text-purple-600 mb-2" id="currency-result">0.00</div>
+                        <div class="text-sm text-gray-500" id="currency-rate-info">კურსი: 1 USD = 2.65 ₾</div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
+                        <div class="currency-card" onclick="selectCurrency('USD')"><div class="text-2xl mb-1">🇺🇸</div><div class="font-semibold text-gray-900">USD</div><div class="text-sm text-gray-600">2.65 ₾</div></div>
+                        <div class="currency-card" onclick="selectCurrency('EUR')"><div class="text-2xl mb-1">🇪🇺</div><div class="font-semibold text-gray-900">EUR</div><div class="text-sm text-gray-600">2.95 ₾</div></div>
+                        <div class="currency-card" onclick="selectCurrency('GBP')"><div class="text-2xl mb-1">🇬🇧</div><div class="font-semibold text-gray-900">GBP</div><div class="text-sm text-gray-600">3.45 ₾</div></div>
+                        <div class="currency-card" onclick="selectCurrency('RUB')"><div class="text-2xl mb-1">🇷🇺</div><div class="font-semibold text-gray-900">RUB</div><div class="text-sm text-gray-600">0.029 ₾</div></div>
+                        <div class="currency-card" onclick="selectCurrency('TRY')"><div class="text-2xl mb-1">🇹🇷</div><div class="font-semibold text-gray-900">TRY</div><div class="text-sm text-gray-600">0.085 ₾</div></div>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ვალუტა</label>
-                    <select id="currency-select" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
-                        <option value="USD">🇺🇸 USD</option>
-                        <option value="EUR">🇪🇺 EUR</option>
-                        <option value="GBP">🇬🇧 GBP</option>
-                        <option value="RUB">🇷🇺 RUB</option>
-                        <option value="TRY">🇹🇷 TRY</option>
-                    </select>
+
+            </div><!-- end .main-content -->
+
+            <!-- RIGHT BANNER -->
+            <aside class="side-banner">
+                <div class="banner-slot">
+                    <!-- Replace the placeholder below with your <img> tag, e.g.:
+                         <img src="banners/right-banner.jpg" alt="რეკლამა">
+                    -->
+                    <span class="banner-placeholder-text">160 × 600<br>Banner</span>
                 </div>
-            </div>
-            <div class="result-box bg-gradient-to-r from-purple-50 to-purple-100 text-center">
-                <div class="text-sm text-gray-600 mb-2" id="currency-result-label">შედეგი (GEL)</div>
-                <div class="text-4xl font-bold text-purple-600 mb-2" id="currency-result">0.00</div>
-                <div class="text-sm text-gray-500" id="currency-rate-info">კურსი: 1 USD = 2.65 ₾</div>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
-                <div class="currency-card" onclick="selectCurrency('USD')"><div class="text-2xl mb-1">🇺🇸</div><div class="font-semibold text-gray-900">USD</div><div class="text-sm text-gray-600">2.65 ₾</div></div>
-                <div class="currency-card" onclick="selectCurrency('EUR')"><div class="text-2xl mb-1">🇪🇺</div><div class="font-semibold text-gray-900">EUR</div><div class="text-sm text-gray-600">2.95 ₾</div></div>
-                <div class="currency-card" onclick="selectCurrency('GBP')"><div class="text-2xl mb-1">🇬🇧</div><div class="font-semibold text-gray-900">GBP</div><div class="text-sm text-gray-600">3.45 ₾</div></div>
-                <div class="currency-card" onclick="selectCurrency('RUB')"><div class="text-2xl mb-1">🇷🇺</div><div class="font-semibold text-gray-900">RUB</div><div class="text-sm text-gray-600">0.029 ₾</div></div>
-                <div class="currency-card" onclick="selectCurrency('TRY')"><div class="text-2xl mb-1">🇹🇷</div><div class="font-semibold text-gray-900">TRY</div><div class="text-sm text-gray-600">0.085 ₾</div></div>
-            </div>
-        </div>
+            </aside>
+
+        </div><!-- end .page-wrapper -->
     </div>
 
     <!-- Footer -->
