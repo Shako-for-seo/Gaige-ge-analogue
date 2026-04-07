@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>მანქანის ჩამოყვანა და განბაჟება — Valuta.ge</title>
+    <meta name="description" content="გამოთვალეთ მანქანის ჩამოყვანისა და განბაჟების სრული ღირებულება საქართველოში. აქციზი, იმპორტის გადასახადი, გაფორმება — ყველაფერი ერთ კალკულატორში.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://avejisqimwmenda.com/mankana-ganbajeba.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta property="og:title" content="მანქანის ჩამოყვანა და განბაჟება — Valuta.ge">
+    <meta property="og:description" content="გამოთვალეთ მანქანის ჩამოყვანისა და განბაჟების სრული ღირებულება. აქციზი, იმპორტის გადასახადი და გაფორმება.">
+    <meta property="og:url" content="https://avejisqimwmenda.com/mankana-ganbajeba.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ka_GE">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "name": "მანქანის ჩამოყვანა და განბაჟება — Valuta.ge",
+          "url": "https://avejisqimwmenda.com/mankana-ganbajeba.html",
+          "description": "მანქანის ჩამოყვანისა და განბაჟების კალკულატორი საქართველოში.",
+          "inLanguage": "ka-GE"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "მანქანის განბაჟების კალკულატორი",
+          "url": "https://avejisqimwmenda.com/mankana-ganbajeba.html",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GEL" },
+          "description": "გამოთვალეთ მანქანის ჩამოყვანისა და განბაჟების სრული ხარჯი.",
+          "inLanguage": "ka-GE"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "რა გადასახადები ეკისრება მანქანის ჩამოტანას საქართველოში?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "მანქანის ჩამოტანისას ეკისრება: აქციზის გადასახადი (ძრავის მოცულობისა და ასაკის მიხედვით), იმპორტის გადასახადი (10% ან 0% ელექტრო/ჰიბრიდზე), გაფორმების საფასური და, საჭიროების შემთხვევაში, ანგარიშგარეშე გამოყენებული დღეების გადასახადი."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "ელექტრო მანქანაზე განბაჟების გადასახადი რა არის?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ელექტრო მანქანები 2030 წლამდე გათავისუფლებულია იმპორტის გადასახადისაგან. აქციზი ასევე 0-ია. გადასახდელია მხოლოდ გაფორმების საფასური."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .calculator-section { background: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04); padding: 2rem; margin-bottom: 2rem; }
+        
+        .input-group label { display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem; }
+        .input-group select, .input-group input[type="number"] {
+            width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #BFDBFE; border-radius: 0.5rem;
+            font-size: 0.95rem; color: #111827; background: #EFF6FF;
+            transition: all 0.2s; outline: none; appearance: none; -webkit-appearance: none;
+        }
+        .input-group select:focus, .input-group input[type="number"]:focus {
+            border-color: #2563EB; background: white; box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+        .select-wrapper { position: relative; }
+        .select-wrapper::after {
+            content: '▾'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+            color: #6B7280; pointer-events: none; font-size: 1rem;
+        }
+
+        .toggle-btn {
+            padding: 0.6rem 1.25rem; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem;
+            cursor: pointer; border: 2px solid transparent; transition: all 0.2s; flex: 1; text-align: center;
+        }
+        .toggle-btn.active { background: #2563EB; color: white; border-color: #2563EB; }
+        .toggle-btn:not(.active) { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+        .toggle-btn:not(.active):hover { background: #DBEAFE; }
+
+        .checkbox-card {
+            display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem;
+            border: 1.5px solid #BFDBFE; border-radius: 0.5rem; cursor: pointer;
+            transition: all 0.2s; background: #EFF6FF; user-select: none; color: #1E40AF;
+        }
+        .checkbox-card:hover { border-color: #3B82F6; background: #DBEAFE; }
+        .checkbox-card.checked { border-color: #2563EB; background: #2563EB; color: white; }
+        .checkbox-card input { display: none; }
+        .checkbox-card .check-icon { width: 18px; height: 18px; border: 2px solid #93C5FD; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; background: white; }
+        .checkbox-card.checked .check-icon { background: white; border-color: white; }
+        .checkbox-card.checked .check-icon::after { content: '✓'; color: #2563EB; font-size: 11px; font-weight: 700; }
+
+        .result-card { border-radius: 0.75rem; padding: 1.75rem; margin-top: 1.5rem; }
+        .result-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .result-row:last-child { border-bottom: none; }
+        .result-total { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-top: 2px solid rgba(37,99,235,0.2); margin-top: 0.5rem; }
+
+        .info-box { background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 0.5rem; padding: 1rem; margin-top: 1rem; }
+        .info-box-blue { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 0.5rem; padding: 1rem; }
+
+        .step-badge { width: 28px; height: 28px; background: #2563EB; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; box-shadow: 0 2px 6px rgba(37,99,235,0.35); }
+
+        .calc-btn {
+            width: 100%; padding: 0.875rem; background: linear-gradient(135deg, #2563EB, #1D4ED8); color: white; font-weight: 600;
+            font-size: 1rem; border: none; border-radius: 0.5rem; cursor: pointer;
+            transition: all 0.2s; margin-top: 1.5rem; letter-spacing: 0.01em;
+        }
+        .calc-btn:hover { background: linear-gradient(135deg, #1D4ED8, #1E40AF); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.4); }
+        .calc-btn:active { transform: translateY(0); }
+
+        .tooltip { position: relative; display: inline-flex; align-items: center; }
+        .tooltip .tip { visibility: hidden; background: #1F2937; color: white; font-size: 0.75rem; padding: 0.5rem 0.75rem; border-radius: 0.375rem; position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%); width: 220px; z-index: 10; line-height: 1.4; }
+        .tooltip:hover .tip { visibility: visible; }
+
+        .section-divider { height: 1px; background: linear-gradient(to right, transparent, #E5E7EB, transparent); margin: 1.5rem 0; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease; }
+
+        /* Breakdown accordion */
+        .breakdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.5rem; color: #3B82F6; font-size: 0.875rem; font-weight: 500; margin-top: 1rem; }
+        .breakdown-content { display: none; }
+        .breakdown-content.open { display: block; }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLJT1DRZM8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VLJT1DRZM8');
+    </script>
+</head>
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    <a href="/" class="text-2xl font-bold text-gray-900">Valuta.ge</a>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="/#loan-calc" class="text-gray-600 hover:text-blue-600 text-sm">სესხი</a>
+                    <a href="/#deposit-calc" class="text-gray-600 hover:text-blue-600 text-sm">ანაბარი</a>
+                    <a href="/#currency-calc" class="text-gray-600 hover:text-blue-600 text-sm">ვალუტა</a>
+                    <a href="/mankana-ganbajeba.html" class="text-blue-600 font-semibold text-sm border-b-2 border-blue-600 pb-0.5">მანქანის განბაჟება</a>
+                    <a href="blogi.html" class="text-gray-600 hover:text-blue-600 text-sm">ბლოგი</a>
+                    <a href="kontaqti.html" class="text-gray-600 hover:text-blue-600 text-sm">კონტაქტი</a>
+                </nav>
+                <button class="md:hidden text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-3 pb-2">
+                <a href="/" class="block text-gray-700 hover:text-blue-600 text-sm">← მთავარი</a>
+                <a href="/mankana-ganbajeba.html" class="block text-blue-600 font-semibold text-sm">მანქანის განბაჟება</a>
+                <a href="blogi.html" class="block text-gray-700 hover:text-blue-600 text-sm">ბლოგი</a>
+                <a href="kontaqti.html" class="block text-gray-700 hover:text-blue-600 text-sm">კონტაქტი</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-3">
+                <a href="/" class="text-blue-300 hover:text-white text-sm transition-colors">Valuta.ge</a>
+                <span class="text-blue-400">›</span>
+                <span class="text-blue-200 text-sm">მანქანის განბაჟება</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-3">🚗 მანქანის ჩამოყვანა და განბაჟება</h1>
+            <p class="text-blue-200 text-lg">გამოთვალეთ სრული ხარჯი — ჩამოტანიდან გაფორმებამდე</p>
+        </div>
+    </section>
+
+    <div class="max-w-5xl mx-auto px-4 py-10">
+
+        <!-- MAIN CALCULATOR -->
+        <div class="calculator-section">
+            <h2 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                განბაჟების კალკულატორი
+            </h2>
+            <p class="text-gray-500 text-sm mb-6">საქართველოს შემოსავლების სამსახურის მეთოდოლოგიით</p>
+
+            <!-- VEHICLE TYPE TOGGLE -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">სატრანსპორტო საშუალების ტიპი</label>
+                <div class="flex gap-2">
+                    <button class="toggle-btn active" id="btn-car" onclick="switchType('car')">🚗 ავტომობილი</button>
+                    <button class="toggle-btn" id="btn-moto" onclick="switchType('moto')">🏍️ მოტოციკლი</button>
+                </div>
+            </div>
+
+            <!-- SPECIAL TYPES (checkboxes) -->
+            <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">მანქანის კატეგორია</label>
+                <div class="flex flex-wrap gap-2" id="category-boxes">
+                    <label class="checkbox-card" id="cb-electric" onclick="toggleCheck(this, 'electric')">
+                        <div class="check-icon"></div>
+                        <span>⚡ ელექტრო</span>
+                    </label>
+                    <label class="checkbox-card" id="cb-hybrid" onclick="toggleCheck(this, 'hybrid')">
+                        <div class="check-icon"></div>
+                        <span>🔋 ჰიბრიდი</span>
+                    </label>
+                    <label class="checkbox-card" id="cb-right" onclick="toggleCheck(this, 'right')">
+                        <div class="check-icon"></div>
+                        <span>🔄 საჭე მარჯვნივ</span>
+                    </label>
+                    <label class="checkbox-card" id="cb-classic" onclick="toggleCheck(this, 'classic')">
+                        <div class="check-icon"></div>
+                        <span class="tooltip">🏛️ კლასიკური
+                            <span class="tip">30 წელზე მეტი ასაკის ავტომობილი</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- FORM GRID -->
+            <div class="grid md:grid-cols-2 gap-5">
+                <!-- Year -->
+                <div class="input-group">
+                    <label>🗓️ წარმოების წელი</label>
+                    <div class="select-wrapper">
+                        <select id="car-year" onchange="onParamChange()">
+                            <option value="">— აირჩიეთ —</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Engine / Power -->
+                <div class="input-group" id="engine-group">
+                    <label id="engine-label">⚙️ ძრავის მოცულობა (სმ³)</label>
+                    <div class="select-wrapper">
+                        <select id="engine-volume" onchange="onParamChange()">
+                            <option value="">— აირჩიეთ —</option>
+                            <option value="1000">1.0 ლ / 1000 სმ³-მდე</option>
+                            <option value="1500">1.5 ლ / 1001 – 1500 სმ³</option>
+                            <option value="2000">2.0 ლ / 1501 – 2000 სმ³</option>
+                            <option value="2500">2.5 ლ / 2001 – 2500 სმ³</option>
+                            <option value="3000">3.0 ლ / 2501 – 3000 სმ³</option>
+                            <option value="3500">3.5 ლ / 3001 – 3500 სმ³</option>
+                            <option value="4000">4.0 ლ / 3501 – 4000 სმ³</option>
+                            <option value="4500">4.5 ლ / 4001 – 4500 სმ³</option>
+                            <option value="5000">5.0 ლ / 4501 – 5000 სმ³</option>
+                            <option value="5500">5.5 ლ / 5001 – 5500 სმ³</option>
+                            <option value="6000">6.0 ლ / 5501 – 6000 სმ³</option>
+                            <option value="6500">6.5 ლ / 6001 – 6500 სმ³</option>
+                            <option value="7000">7.0 ლ / 6501 – 7000 სმ³</option>
+                            <option value="7500">7.5 ლ / 7001 – 7500 სმ³</option>
+                            <option value="8000">8.0 ლ / 7501 – 8000 სმ³</option>
+                            <option value="9999">8.0 ლ-ზე მეტი</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Moto cc input (hidden by default) -->
+                <div class="input-group hidden" id="moto-cc-group">
+                    <label>⚙️ ძრავის მოცულობა (სმ³)</label>
+                    <input type="number" id="moto-cc" placeholder="მაგ: 650" min="1" max="9999" oninput="onParamChange()">
+                </div>
+
+                <!-- Import country -->
+                <div class="input-group">
+                    <label>🌍 ჩამოყვანის ქვეყანა</label>
+                    <div class="select-wrapper">
+                        <select id="import-country" onchange="onParamChange()">
+                            <option value="">— აირჩიეთ —</option>
+                            <option value="USA" data-shipping="2800">🇺🇸 აშშ (საშ. ზღვ. ფრახტი ~2,800$)</option>
+                            <option value="GER" data-shipping="1200">🇩🇪 გერმანია (საშ. ~1,200$)</option>
+                            <option value="UAE" data-shipping="1500">🇦🇪 არაბეთი / დუბაი (საშ. ~1,500$)</option>
+                            <option value="KOR" data-shipping="1800">🇰🇷 სამხრეთ კორეა (საშ. ~1,800$)</option>
+                            <option value="JPN" data-shipping="2000">🇯🇵 იაპონია (საშ. ~2,000$)</option>
+                            <option value="CHN" data-shipping="2200">🇨🇳 ჩინეთი (საშ. ~2,200$)</option>
+                            <option value="ARM" data-shipping="200">🇦🇲 სომხეთი (საშ. ~200$)</option>
+                            <option value="AZE" data-shipping="150">🇦🇿 აზერბაიჯანი (საშ. ~150$)</option>
+                            <option value="RUS" data-shipping="300">🇷🇺 რუსეთი (საშ. ~300$)</option>
+                            <option value="UKR" data-shipping="600">🇺🇦 უკრაინა (საშ. ~600$)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Car price -->
+                <div class="input-group">
+                    <label>💰 მანქანის ფასი (USD)</label>
+                    <input type="number" id="car-price" placeholder="მაგ: 12000" min="0" oninput="onParamChange()">
+                </div>
+
+                <!-- Used days -->
+                <div class="input-group">
+                    <label class="flex items-center gap-1">
+                        📅 ანგარიშგარეშე გამოყენება
+                        <span class="tooltip" style="cursor:help">
+                            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            <span class="tip">ჩამოტანამდე სხვა ქვეყანაში გამოყენებული დღეები (მაქს. 30)</span>
+                        </span>
+                    </label>
+                    <div class="select-wrapper">
+                        <select id="used-days" onchange="onParamChange()">
+                            <option value="0">0 დღე (არ გამოიყენება)</option>
+                            <option value="1">1-3 დღე</option>
+                            <option value="4">4-10 დღე</option>
+                            <option value="11">11-20 დღე</option>
+                            <option value="21">21-30 დღე</option>
+                            <option value="31">30+ დღე</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- USD rate -->
+                <div class="input-group">
+                    <label>💱 USD/GEL კურსი
+                        <span id="rate-auto-tag" class="ml-1 text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded">ავტო</span>
+                    </label>
+                    <input type="number" id="usd-rate" placeholder="2.65" step="0.01" min="1" oninput="onParamChange()">
+                </div>
+            </div>
+
+            <button class="calc-btn" onclick="calculate()">
+                🧮 გამოთვლა
+            </button>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="calculator-section fade-in" id="results-section" style="display:none;">
+            <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                გამოთვლის შედეგი
+            </h2>
+
+            <!-- TOTAL COST SUMMARY -->
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-50 rounded-xl p-4 text-center border border-blue-100">
+                    <div class="text-sm text-blue-600 font-medium mb-1">🚢 ჩამოტანის ხარჯი</div>
+                    <div class="text-2xl font-bold text-blue-800" id="r-shipping">— ₾</div>
+                    <div class="text-xs text-blue-500 mt-1" id="r-shipping-usd"></div>
+                </div>
+                <div class="bg-orange-50 rounded-xl p-4 text-center border border-orange-100">
+                    <div class="text-sm text-orange-600 font-medium mb-1">🏛️ განბაჟება სულ</div>
+                    <div class="text-2xl font-bold text-orange-800" id="r-customs-total">— ₾</div>
+                    <div class="text-xs text-orange-500 mt-1">გადასახადები + გაფორმება</div>
+                </div>
+                <div class="bg-green-50 rounded-xl p-4 text-center border border-green-100">
+                    <div class="text-sm text-green-600 font-medium mb-1">💳 სრული ჯამი</div>
+                    <div class="text-2xl font-bold text-green-800" id="r-grand-total">— ₾</div>
+                    <div class="text-xs text-green-500 mt-1">ყველა ხარჯის ჩათვლით</div>
+                </div>
+            </div>
+
+            <!-- DETAILED BREAKDOWN -->
+            <div class="result-card bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+                <h3 class="font-semibold text-gray-800 mb-3">📋 დეტალური განაშლა</h3>
+
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">🚗 მანქანის ფასი</span>
+                    <span class="font-semibold text-gray-900" id="r-car-price-gel">—</span>
+                </div>
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">🚢 ფრახტი / ჩამოტანა</span>
+                    <span class="font-semibold text-gray-900" id="r-freight">—</span>
+                </div>
+
+                <div class="section-divider"></div>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">განბაჟების გადასახადები</p>
+
+                <div class="result-row" id="excise-row">
+                    <span class="text-gray-600 text-sm flex items-center gap-1">
+                        ⛽ აქციზის გადასახადი
+                        <span class="tooltip" style="cursor:help">
+                            <svg class="w-3.5 h-3.5 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            <span class="tip">ძრავის მოცულობასა და ასაკზე დამოკიდებული</span>
+                        </span>
+                    </span>
+                    <span class="font-semibold text-gray-900" id="r-excise">—</span>
+                </div>
+                <div class="result-row" id="import-tax-row">
+                    <span class="text-gray-600 text-sm">📦 იმპორტის გადასახადი</span>
+                    <span class="font-semibold text-gray-900" id="r-import-tax">—</span>
+                </div>
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">📄 გაფორმების საფასური</span>
+                    <span class="font-semibold text-gray-900" id="r-clearance-fee">150 ₾</span>
+                </div>
+                <div class="result-row" id="used-days-row" style="display:none">
+                    <span class="text-gray-600 text-sm">📅 ანგარიშგარეშე გამოყ. (დღეები)</span>
+                    <span class="font-semibold text-gray-900" id="r-used-days">—</span>
+                </div>
+                <div class="result-row" id="right-wheel-row" style="display:none">
+                    <span class="text-gray-600 text-sm">🔄 საჭე მარჯვნივ (დამატებითი)</span>
+                    <span class="font-semibold text-orange-600" id="r-right-wheel">+ 500 ₾</span>
+                </div>
+
+                <div class="section-divider"></div>
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">შსსს საფასურები (სავარაუდო)</p>
+
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">📝 საბაჟო დეკლარაციის შევსება</span>
+                    <span class="font-medium text-gray-700">150 ₾</span>
+                </div>
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">🔍 დათვალიერების აქტი</span>
+                    <span class="font-medium text-gray-700">18 ₾</span>
+                </div>
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">🔢 სარეგისტრაციო მოწმობა</span>
+                    <span class="font-medium text-gray-700">55 ₾</span>
+                </div>
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">🔢 სახელმწიფო ნომერი (ჩვეულებრივი)</span>
+                    <span class="font-medium text-gray-700">100 ₾</span>
+                </div>
+                <div class="result-row">
+                    <span class="text-gray-600 text-sm">🚗 ტრანზიტული ნომრის გაცემა</span>
+                    <span class="font-medium text-gray-700">30 ₾</span>
+                </div>
+
+                <div class="result-total">
+                    <span class="text-lg font-bold text-gray-800">სრული ჯამი (ყველა ხარჯი)</span>
+                    <span class="text-2xl font-bold text-blue-700" id="r-final">— ₾</span>
+                </div>
+            </div>
+
+            <!-- DISCLAIMER -->
+            <div class="info-box mt-4">
+                <p class="text-sm text-amber-800">
+                    <strong>⚠️ მნიშვნელოვანი:</strong> კალკულატორი იძლევა სავარაუდო შედეგს. ზუსტი გადასახადებისთვის მიმართეთ
+                    <a href="https://www.rs.ge/CarClearance" target="_blank" rel="noopener" class="underline font-medium">rs.ge-ს ოფიციალურ კალკულატორს</a>
+                    ან შემოსავლების სამსახურს (2 299 299).
+                </p>
+            </div>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="calculator-section">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">📖 როგორ მუშაობს მანქანის ჩამოტანა</h2>
+            <div class="space-y-5">
+                <div class="flex gap-4">
+                    <div class="step-badge">1</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">მანქანის შეძენა</h3>
+                        <p class="text-gray-600 text-sm">ყიდულობთ მანქანას (Copart, IAAI, AutoTrader, Mobile.de და სხვ.). ფასს ემატება აუქციონის კომისია და სხვა ადგილობრივი გადასახდელები.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="step-badge">2</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">ტრანსპორტირება (ფრახტი)</h3>
+                        <p class="text-gray-600 text-sm">მანქანა გეგზავნებათ პორტიდან პოტამდე (Poti). აშშ-დან საშუალოდ 2,500–3,500$. გერმანიიდან — 900–1,500$. ვადა: 25-45 დღე.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="step-badge">3</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">განბაჟება (საბაჟო გამშვები)</h3>
+                        <p class="text-gray-600 text-sm">პოტის ან სხვა საბაჟო გამშვებ პუნქტში გადაიხდით: <strong>აქციზს</strong> (ძრავის მოცულობა × ასაკის კოეფ.), <strong>იმპორტის გადასახადს</strong> (ფასის 10%), <strong>გაფორმების</strong> საფასურს.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="step-badge">4</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-1">დარეგისტრირება შსსს-ში</h3>
+                        <p class="text-gray-600 text-sm">გადაიხდით სარეგისტრაციო საფასურს, მიიღებთ ნომრებს და მოწმობას. სულ — 200-400 ₾ (ჩვეულებრივი პროცედურა).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- EXCISE TABLE -->
+            <h3 class="font-bold text-gray-800 mb-4">⛽ აქციზის განაკვეთები (ძრავა × კოეფ.)</h3>
+            <div class="info-box-blue mb-4">
+                <p class="text-sm text-blue-700">ფორმულა: <strong>სმ³ × განაკვეთი × ასაკის კოეფიციენტი</strong>. ელექტრო და კლასიკური (30+ წელი) — 0.</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border-collapse">
+                    <thead>
+                        <tr class="bg-blue-600">
+                            <th class="text-left p-3 border border-blue-700 text-white font-semibold">ძრავის მოცულობა</th>
+                            <th class="text-center p-3 border border-blue-700 text-white font-semibold">€/სმ³</th>
+                            <th class="text-center p-3 border border-blue-700 text-white font-semibold">0-3 წელი (×0.1)</th>
+                            <th class="text-center p-3 border border-blue-700 text-white font-semibold">3-7 წელი (×1)</th>
+                            <th class="text-center p-3 border border-blue-700 text-white font-semibold">7+ წელი (×1.5)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">≤ 1.0 ლ (1000 სმ³)</td><td class="p-3 border border-gray-200 text-center">0.05</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">5€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">50€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">75€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">1.5 ლ (1001–1500)</td><td class="p-3 border border-gray-200 text-center">0.06</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~8€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~78€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~117€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">2.0 ლ (1501–2000)</td><td class="p-3 border border-gray-200 text-center">0.07</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~12€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~123€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~184€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">2.5 ლ (2001–2500)</td><td class="p-3 border border-gray-200 text-center">0.08</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~18€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~180€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~270€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">3.0 ლ (2501–3000)</td><td class="p-3 border border-gray-200 text-center">0.10</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~27€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~275€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~413€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">3.5 ლ (3001–3500)</td><td class="p-3 border border-gray-200 text-center">0.13</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~43€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~430€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~645€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">4.0 ლ (3501–4000)</td><td class="p-3 border border-gray-200 text-center">0.15</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~56€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~563€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~844€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">4.5 ლ (4001–4500)</td><td class="p-3 border border-gray-200 text-center">0.17</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~72€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~720€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~1,080€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">5.0 ლ (4501–5000)</td><td class="p-3 border border-gray-200 text-center">0.20</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~95€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~950€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~1,425€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">5.5 ლ (5001–5500)</td><td class="p-3 border border-gray-200 text-center">0.22</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~116€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~1,155€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~1,733€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">6.0 ლ (5501–6000)</td><td class="p-3 border border-gray-200 text-center">0.25</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~144€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~1,438€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~2,156€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">6.5 ლ (6001–6500)</td><td class="p-3 border border-gray-200 text-center">0.27</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~169€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~1,688€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~2,531€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">7.0 ლ (6501–7000)</td><td class="p-3 border border-gray-200 text-center">0.30</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~203€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~2,025€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~3,038€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200">7.5 ლ (7001–7500)</td><td class="p-3 border border-gray-200 text-center">0.33</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~239€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~2,393€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~3,589€</td></tr>
+                        <tr class="hover:bg-blue-50"><td class="p-3 border border-gray-200">8.0 ლ (7501–8000)</td><td class="p-3 border border-gray-200 text-center">0.36</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~277€</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~2,768€</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~4,151€</td></tr>
+                        <tr class="bg-blue-50 hover:bg-blue-100"><td class="p-3 border border-gray-200 font-semibold">8.0 ლ-ზე მეტი</td><td class="p-3 border border-gray-200 text-center">0.40</td><td class="p-3 border border-gray-200 text-center text-green-600 font-medium">~320€+</td><td class="p-3 border border-gray-200 text-center text-blue-700 font-medium">~3,200€+</td><td class="p-3 border border-gray-200 text-center text-orange-500 font-medium">~4,800€+</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">* სავარაუდო მაჩვენებლები. ჰიბრიდზე კოეფ. 0.4. ელექტრო — 0.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="calculator-section">
+            <h2 class="text-xl font-bold text-gray-900 mb-5">❓ ხშირად დასმული კითხვები</h2>
+            <div class="space-y-4">
+                <details class="border border-blue-200 rounded-lg bg-blue-50">
+                    <summary class="p-4 cursor-pointer font-medium text-blue-900 hover:bg-blue-100 rounded-lg">ელექტრო მანქანაზე განბაჟება ნამდვილად 0-ია?</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600 border-t border-blue-100 pt-3">
+                        დიახ, 2030 წლამდე ელექტრო მანქანები გათავისუფლებულია იმპორტისა და აქციზის გადასახადებისაგან. გადასახდელია მხოლოდ გაფორმების + შსსს-ის საფასური (სულ ~350-500 ₾).
+                    </div>
+                </details>
+                <details class="border border-blue-200 rounded-lg bg-blue-50">
+                    <summary class="p-4 cursor-pointer font-medium text-blue-900 hover:bg-blue-100 rounded-lg">რა არის „ანგარიშგარეშე გამოყენება"?</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600 border-t border-blue-100 pt-3">
+                        თუ მანქანა საქართველოში ჩამოტანამდე სხვა ქვეყანაში იყო გამოყენებული (საქართველოს მოქალაქის მიერ), ფრახტამდე ყოველ დღეზე ერიცხება 30 ლარი (მაქს. 30 დღე = 900 ₾).
+                    </div>
+                </details>
+                <details class="border border-blue-200 rounded-lg bg-blue-50">
+                    <summary class="p-4 cursor-pointer font-medium text-blue-900 hover:bg-blue-100 rounded-lg">საჭე მარჯვნივ — შეიძლება ჩამოტანა?</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600 border-t border-blue-100 pt-3">
+                        კი, შეიძლება. თუმცა 2023 წლიდან მასზე ემატება 500 ₾ დამატებითი გადასახადი განბაჟებისას.
+                    </div>
+                </details>
+                <details class="border border-blue-200 rounded-lg bg-blue-50">
+                    <summary class="p-4 cursor-pointer font-medium text-blue-900 hover:bg-blue-100 rounded-lg">კლასიკური მანქანა (30+ წელი) — რა გამოდის?</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600 border-t border-blue-100 pt-3">
+                        კლასიკურ ავტომობილზე (30 წელზე მეტი) აქციზი 0-ია. იმპორტის გადასახადი (10%) კი ჩვეულებრივ გამოითვლება ფასიდან.
+                    </div>
+                </details>
+                <details class="border border-blue-200 rounded-lg bg-blue-50">
+                    <summary class="p-4 cursor-pointer font-medium text-blue-900 hover:bg-blue-100 rounded-lg">რამდენ ხანს გრძელდება განბაჟების პროცესი?</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600 border-t border-blue-100 pt-3">
+                        საბაჟო პუნქტში (ბათუმი/ფოთი) განბაჟება 1-3 სამუშაო დღეს გრძელდება. შსსს-ში რეგისტრაცია — 1 დღე.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white mt-4">
+        <div class="max-w-7xl mx-auto px-4 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        <span class="text-xl font-bold">Valuta.ge</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">საქართველოს უფასო საფინანსო კალკულატორები.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-3">კალკულატორები</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="/#loan-calc" class="hover:text-white">🏦 სესხის კალკულატორი</a></li>
+                        <li><a href="/#deposit-calc" class="hover:text-white">💰 ანაბრის კალკულატორი</a></li>
+                        <li><a href="/#currency-calc" class="hover:text-white">💱 ვალუტის კურსი</a></li>
+                        <li><a href="/mankana-ganbajeba.html" class="hover:text-white text-blue-400">🚗 მანქანის განბაჟება</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-3">კონტაქტი</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>📞 <a href="tel:+995598388705" class="hover:text-white">598 38 87 05</a></li>
+                        <li>✉️ <a href="mailto:info@adsocial.ge" class="hover:text-white">info@adsocial.ge</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-5 text-center">
+                <p class="text-gray-400 text-sm">© 2026 Valuta.ge — ყველა უფლება დაცულია</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // STATE
+        // ============================================================
+        const state = {
+            vehicleType: 'car',
+            isElectric: false,
+            isHybrid: false,
+            isRightWheel: false,
+            isClassic: false,
+            usdRate: 2.73,
+            eurRate: 3.02
+        };
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            populateYears();
+            fetchRates();
+        });
+
+        function populateYears() {
+            const sel = document.getElementById('car-year');
+            const cur = new Date().getFullYear();
+            for (let y = cur; y >= 1980; y--) {
+                const o = document.createElement('option');
+                o.value = y;
+                o.textContent = y + ' წელი';
+                sel.appendChild(o);
+            }
+        }
+
+        async function fetchRates() {
+            try {
+                const res = await fetch('https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies/en/json');
+                const data = await res.json();
+                data[0].currencies.forEach(c => {
+                    if (c.code === 'USD') state.usdRate = +(c.rate / c.quantity).toFixed(4);
+                    if (c.code === 'EUR') state.eurRate = +(c.rate / c.quantity).toFixed(4);
+                });
+                document.getElementById('usd-rate').value = state.usdRate;
+                document.getElementById('rate-auto-tag').style.display = 'inline';
+            } catch(e) {
+                document.getElementById('usd-rate').placeholder = state.usdRate.toFixed(2);
+            }
+        }
+
+        // ============================================================
+        // UI TOGGLES
+        // ============================================================
+        function switchType(type) {
+            state.vehicleType = type;
+            document.getElementById('btn-car').classList.toggle('active', type === 'car');
+            document.getElementById('btn-moto').classList.toggle('active', type === 'moto');
+            document.getElementById('engine-group').classList.toggle('hidden', type === 'moto');
+            document.getElementById('moto-cc-group').classList.toggle('hidden', type === 'car');
+
+            // Hide hybrid/right/classic for moto
+            ['cb-hybrid','cb-right','cb-classic'].forEach(id => {
+                document.getElementById(id).closest ? null : null;
+                document.getElementById(id).style.display = type === 'moto' ? 'none' : '';
+            });
+        }
+
+        function toggleCheck(el, key) {
+            el.classList.toggle('checked');
+            const isChecked = el.classList.contains('checked');
+
+            // Mutually exclusive: electric vs hybrid
+            if (key === 'electric' && isChecked) {
+                document.getElementById('cb-hybrid').classList.remove('checked');
+                state.isHybrid = false;
+            }
+            if (key === 'hybrid' && isChecked) {
+                document.getElementById('cb-electric').classList.remove('checked');
+                state.isElectric = false;
+            }
+
+            state.isElectric  = key === 'electric' ? isChecked : (key === 'hybrid' && isChecked ? false : state.isElectric);
+            state.isHybrid    = key === 'hybrid'   ? isChecked : (key === 'electric' && isChecked ? false : state.isHybrid);
+            state.isRightWheel = key === 'right'   ? isChecked : state.isRightWheel;
+            state.isClassic   = key === 'classic'  ? isChecked : state.isClassic;
+        }
+
+        function onParamChange() {
+            // live rate override
+            const rateInput = document.getElementById('usd-rate').value;
+            if (rateInput) {
+                state.usdRate = parseFloat(rateInput) || 2.73;
+                document.getElementById('rate-auto-tag').style.display = 'none';
+            }
+        }
+
+        // ============================================================
+        // CALCULATION LOGIC
+        // ============================================================
+
+        // Excise rate per cc (EUR)
+        const exciseRates = [
+            { max: 1000, rate: 0.05 },
+            { max: 1500, rate: 0.06 },
+            { max: 2000, rate: 0.07 },
+            { max: 2500, rate: 0.08 },
+            { max: 3000, rate: 0.10 },
+            { max: 3500, rate: 0.13 },
+            { max: 4000, rate: 0.15 },
+            { max: 4500, rate: 0.17 },
+            { max: 5000, rate: 0.20 },
+            { max: 5500, rate: 0.22 },
+            { max: 6000, rate: 0.25 },
+            { max: 6500, rate: 0.27 },
+            { max: 7000, rate: 0.30 },
+            { max: 7500, rate: 0.33 },
+            { max: 8000, rate: 0.36 },
+            { max: Infinity, rate: 0.40 }
+        ];
+
+        function getExciseRate(cc) {
+            for (const r of exciseRates) { if (cc <= r.max) return r.rate; }
+            return 0.20;
+        }
+
+        function getAgeCoeff(year) {
+            const age = new Date().getFullYear() - year;
+            if (age <= 3)  return 0.10;
+            if (age <= 7)  return 1.00;
+            return 1.50;
+        }
+
+        function getMotoExcise(cc, year) {
+            const age = new Date().getFullYear() - year;
+            let base = 0;
+            if (cc <= 50)        base = 0.01 * cc;
+            else if (cc <= 250)  base = 0.04 * cc;
+            else if (cc <= 500)  base = 0.06 * cc;
+            else if (cc <= 750)  base = 0.08 * cc;
+            else                 base = 0.10 * cc;
+            const coeff = age <= 3 ? 0.10 : age <= 7 ? 1.00 : 1.50;
+            return base * coeff;  // in EUR
+        }
+
+        function getUsedDaysFee(val) {
+            // val is the select value
+            const v = parseInt(val);
+            if (v === 0)  return 0;
+            if (v === 1)  return 3 * 30;    // 1-3 days
+            if (v === 4)  return 10 * 30;
+            if (v === 11) return 20 * 30;
+            if (v === 21) return 30 * 30;
+            if (v === 31) return 30 * 30;
+            return 0;
+        }
+
+        function fmt(n) {
+            return n.toLocaleString('ka-GE', { maximumFractionDigits: 0 }) + ' ₾';
+        }
+
+        function calculate() {
+            const yearVal    = document.getElementById('car-year').value;
+            const priceUSD   = parseFloat(document.getElementById('car-price').value);
+            const countryEl  = document.getElementById('import-country');
+            const shipping   = countryEl.value ? parseInt(countryEl.selectedOptions[0].dataset.shipping || 0) : 0;
+            const usedDaysSel = document.getElementById('used-days').value;
+            const usdRate    = parseFloat(document.getElementById('usd-rate').value) || state.usdRate;
+
+            // Validation
+            if (!yearVal || !priceUSD || !countryEl.value) {
+                alert('გთხოვთ შეავსოთ ყველა სავალდებულო ველი: წელი, ფასი, ქვეყანა');
+                return;
+            }
+
+            const year = parseInt(yearVal);
+            const priceGEL = priceUSD * usdRate;
+            const shippingGEL = shipping * usdRate;
+
+            let exciseEUR = 0;
+            let importTaxRate = 0.10;
+
+            if (state.vehicleType === 'car') {
+                const engVal = document.getElementById('engine-volume').value;
+                if (!engVal) { alert('გთხოვთ აირჩიოთ ძრავის მოცულობა'); return; }
+                const cc = parseInt(engVal);
+
+                if (state.isElectric) {
+                    exciseEUR = 0;
+                    importTaxRate = 0;
+                } else if (state.isClassic) {
+                    exciseEUR = 0;
+                    importTaxRate = 0.10;
+                } else {
+                    const rate = getExciseRate(cc);
+                    const coeff = state.isHybrid ? 0.40 : getAgeCoeff(year);
+                    exciseEUR = cc * rate * coeff;
+                }
+            } else {
+                // Moto
+                const cc = parseInt(document.getElementById('moto-cc').value) || 0;
+                if (!cc) { alert('გთხოვთ შეიყვანოთ ძრავის მოცულობა'); return; }
+                exciseEUR = state.isElectric ? 0 : getMotoExcise(cc, year);
+                if (state.isElectric) importTaxRate = 0;
+            }
+
+            const exciseGEL = exciseEUR * state.eurRate;
+            const importTax = priceGEL * importTaxRate;
+            const clearanceFee = 150;
+            const sssFees = 150 + 18 + 55 + 100 + 30; // 353
+            const rightWheelFee = state.isRightWheel ? 500 : 0;
+            const usedDaysFee = getUsedDaysFee(usedDaysSel);
+
+            const customsTotal = exciseGEL + importTax + clearanceFee + rightWheelFee + usedDaysFee;
+            const grandTotal = priceGEL + shippingGEL + customsTotal + sssFees;
+
+            // Render
+            document.getElementById('results-section').style.display = 'block';
+            document.getElementById('results-section').classList.add('fade-in');
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Summary cards
+            document.getElementById('r-shipping').textContent = fmt(shippingGEL);
+            document.getElementById('r-shipping-usd').textContent = '~' + shipping.toLocaleString() + ' USD';
+            document.getElementById('r-customs-total').textContent = fmt(customsTotal);
+            document.getElementById('r-grand-total').textContent = fmt(grandTotal);
+
+            // Detail rows
+            document.getElementById('r-car-price-gel').textContent = fmt(priceGEL) + ' (~' + priceUSD.toLocaleString() + ' USD)';
+            document.getElementById('r-freight').textContent = fmt(shippingGEL) + ' (~' + shipping.toLocaleString() + ' USD)';
+
+            // Excise
+            const exciseRow = document.getElementById('excise-row');
+            if (state.isElectric) {
+                document.getElementById('r-excise').textContent = '0 ₾ (გათავისუფლებული)';
+                document.getElementById('r-excise').className = 'font-semibold text-green-600';
+            } else {
+                document.getElementById('r-excise').textContent = fmt(exciseGEL) + ' (~' + exciseEUR.toFixed(0) + '€)';
+                document.getElementById('r-excise').className = 'font-semibold text-gray-900';
+            }
+
+            // Import tax
+            if (importTaxRate === 0) {
+                document.getElementById('r-import-tax').textContent = '0 ₾ (გათავისუფლებული)';
+                document.getElementById('r-import-tax').className = 'font-semibold text-green-600';
+            } else {
+                document.getElementById('r-import-tax').textContent = fmt(importTax) + ' (' + (importTaxRate*100) + '%)';
+                document.getElementById('r-import-tax').className = 'font-semibold text-gray-900';
+            }
+
+            // Used days
+            const udRow = document.getElementById('used-days-row');
+            if (usedDaysFee > 0) {
+                udRow.style.display = 'flex';
+                document.getElementById('r-used-days').textContent = fmt(usedDaysFee);
+            } else { udRow.style.display = 'none'; }
+
+            // Right wheel
+            const rwRow = document.getElementById('right-wheel-row');
+            rwRow.style.display = state.isRightWheel ? 'flex' : 'none';
+
+            document.getElementById('r-final').textContent = fmt(grandTotal);
+        }
+    </script>
+
+</body>
+</html>
