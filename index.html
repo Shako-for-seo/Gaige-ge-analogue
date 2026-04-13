@@ -146,6 +146,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    /* ===== FACEBOOK SOCIAL BUTTON ===== */
+#fb-social-btn {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+}
+#fb-social-btn a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #1877F2;
+    color: #fff;
+    width: 44px;
+    padding: 12px 0 10px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 3px 2px 10px rgba(0,0,0,0.22);
+    text-decoration: none;
+    transition: background 0.2s, width 0.2s;
+    gap: 7px;
+}
+#fb-social-btn a:hover { background: #145db2; width: 52px; }
+#fb-social-btn a svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+#fb-social-btn a span {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: #fff;
+    writing-mode: vertical-rl; text-orientation: mixed;
+    transform: rotate(180deg); line-height: 1;
+}
+@media (max-width: 640px) {
+    #fb-social-btn a { width: 36px; padding: 8px 0 6px; border-radius: 0 7px 7px 0; }
+    #fb-social-btn a svg { width: 18px; height: 18px; }
+    #fb-social-btn a span { display: none; }
+}
+/* ===== END FACEBOOK SOCIAL BUTTON ===== */
     <style>
         .calculator-section { background: white; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); padding: 2rem; margin-bottom: 2rem; }
         .range-slider { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 5px; background: #ddd; outline: none; }
@@ -186,6 +223,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 </head>
 <body class="bg-gray-50">
+    <!-- ===== FACEBOOK SOCIAL BUTTON ===== -->
+<div id="fb-social-btn">
+    <a href="https://www.facebook.com/shalvajanashvil" target="_blank" rel="noopener" aria-label="Facebook გვერდი">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+        </svg>
+        <span>Facebook</span>
+    </a>
+</div>
+<!-- ===== END FACEBOOK SOCIAL BUTTON ===== -->
 
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4">
